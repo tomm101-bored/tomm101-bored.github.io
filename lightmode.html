@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomm's Portal</title>
+    <script>
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+        if (localStorage.getItem('theme') === 'dark' || !localStorage.getItem('theme')) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white dark:bg-gray-100 dark:text-white min-h-screen flex flex-col items-center p-6 transition-colors duration-300">
+    <div class="w-full flex justify-end mb-4">
+        <a href="https://tomm101-bored.github.io" class="px-4 py-2 rounded bg-gray-300 dark:bg-gray-700 text-black dark:text-white hover:bg-gray-400 dark:hover:bg-gray-600 transition">
+            🌗
+        </a>
+    </div>
+    <header class="text-center mb-8">
+        <h1 class="text-4xl font-bold mb-2 dark:text-black">Tomm's Project Portal</h1>
+        <p class="text-lg max-w-xl mb-4 dark:text-black">Heyo! I'm Tomm, a random guy on the internet who you somehow found. I am a beginner coder and very small content creator. All my links can be found under the links tab!</p>
+    </header>
+
+    <section class="w-full max-w-4xl">
+        <div class="grid grid-cols-1 gap-4 mb-4">
+            <!-- Social Link Row -->
+            <a href="https://guns.lol/tomm.fr" target="_blank" class="bg-blue-600 rounded-xl p-4 text-center hover:bg-blue-700 transition">
+                guns.lol/tomm.fr
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Project Links -->
+            <a href="https://tomm101-bored.github.io/ChristmasEveCountdown/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Christmas Eve Countdown
+            </a>
+            <a href="https://tomm101-bored.github.io/mines/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Mines
+            </a>
+            <a href="https://tomm101-bored.github.io/clockcountdown/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Clock Countdown
+            </a>
+            <a href="https://tomm101-bored.github.io/hangman/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Hangman
+            </a>
+            <a href="https://tomm101-bored.github.io/textanalyzer/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Text Analyzer
+            </a>
+            <a href="https://tomm101-bored.github.io/CalculatorSimple/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Simple Calculator
+            </a>
+            <a href="https://tomm101-bored.github.io/statusswitcher/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Status Switcher
+            </a>
+            <a href="https://tomm101-bored.github.io/clickme/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Click Me
+            </a>
+            <a href="https://tomm101-bored.github.io/textplanner/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Text Planner
+            </a>
+            <a href="https://tomm101-bored.github.io/stopwatch/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Stopwatch
+            </a>
+            <a href="https://tomm101-bored.github.io/YMDP/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                YMDP
+            </a>
+            <a href="https://tomm101-bored.github.io/rolladie/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Roll a Die
+            </a>
+            <a href="https://tomm101-bored.github.io/TIDP/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                TIDP
+            </a>
+            <a href="https://tomm101-bored.github.io/discordembededitor" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Discord Embed Editor
+            </a>
+            <a href="https://tomm101-bored.github.io/rockpaperscissors" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Rock Paper Scissors
+            </a>
+            <a href="https://tomm101-bored.github.io/downloadmoreram" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                Download More RAM
+            </a>
+            <a href="https://tomm101-bored.github.io/onehourprogressbar" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                One Hour Progress Bar
+            </a>
+            <a href="https://onlycats404.github.io/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
+                OnlyCats404
+            </a>
+        </div>
+    </section>
+</body>
+</html>
