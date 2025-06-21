@@ -1,115 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class="dark"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomm's Portal</title>
+    <title>Tomm's Enhanced Project Portal</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <style>
-body {
-  font-family: 'Quicksand', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to bottom, #1c1c1c, #404040);
-  color: #232323;
-  min-height: 100vh;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
+        /* --- Custom CSS for a more polished look --- */
+
+        /* Setting the base font and a smooth background transition */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f9; /* Light mode background */
+            color: #4a5568; /* Light mode text */
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Dark mode styles */
+        .dark body {
+            background-color: #1a202c; /* Dark mode background */
+            color: #e2e8f0; /* Dark mode text */
+        }
+
+        /* Styling for the main header with a gradient text effect */
+        .gradient-text {
+            background-image: linear-gradient(to right, #4c51bf, #6b46c1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Project card styling */
+        .project-card {
+            background-color: #ffffff; /* Light mode card background */
+            border: 1px solid #e2e8f0; /* Light mode border */
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem; /* Space between icon and text */
+            color: #2d3748; /* Light mode card text */
+        }
+
+        .dark .project-card {
+            background-color: #2d3748; /* Dark mode card background */
+            border: 1px solid #4a5568; /* Dark mode border */
+            color: #e2e8f0; /* Dark mode card text */
+        }
+
+        /* Enhanced hover effect for project cards */
+        .project-card:hover {
+            transform: translateY(-5px); /* Lifts the card on hover */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .project-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Social link styling */
+        .social-link {
+            background-color: #4c51bf;
+            color: white;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: 600;
+        }
+
+        .social-link:hover {
+            background-color: #434190;
+            transform: translateY(-3px);
+        }
+
+        /* Theme toggle button styling */
+        .theme-toggle {
+            background-color: #e2e8f0;
+            color: #2d3748;
+            border-radius: 9999px; /* Make it a circle */
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .dark .theme-toggle {
+            background-color: #2d3748;
+            color: #e2e8f0;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+        }
+
     </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-white min-h-screen flex flex-col items-center p-6 transition-colors duration-300">
-    <div class="w-full flex justify-end mb-4">
-       <a href="https://tomm101-bored.github.io/lightmode.html" class="px-4 py-2 rounded bg-gray-300 dark:bg-gray-700 text-black dark:text-white hover:bg-gray-400 dark:hover:bg-gray-600 transition">
-            🌗
-        </a>
+<body class="min-h-screen flex flex-col items-center p-6 sm:p-8">
+    
+    <div class="w-full max-w-5xl flex justify-end mb-4">
+       <button id="theme-toggle-btn" class="theme-toggle">
+            <i class="fas fa-moon"></i> <i class="fas fa-sun" style="display: none;"></i> </button>
     </div>
-    <header class="text-center mb-8">
-        <h1 class="text-4xl font-bold mb-2">Tomm's Project Portal</h1>
-        <p class="text-lg max-w-xl mb-4">Heyo! I'm Tomm, a random guy on the internet who you somehow found. I am a beginner coder and very small content creator. All my links can be found under the links tab!</p>
+    
+    <header class="text-center mb-12">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 gradient-text">Tomm's Project Portal</h1>
+        <p class="text-lg max-w-2xl mx-auto">Heyo! I'm Tomm, a creative coder and content creator exploring the web. Welcome to my collection of projects. Feel free to look around!</p>
     </header>
 
-    <section class="w-full max-w-4xl">
-        <div class="grid grid-cols-1 gap-4 mb-4">
-            <!-- Social Link Row -->
-            <a href="https://guns.lol/tomm.fr" target="_blank" class="bg-blue-600 rounded-xl p-4 text-center hover:bg-blue-700 transition">
-                guns.lol/tomm.fr
+    <section class="w-full max-w-5xl">
+        
+        <div class="mb-8">
+            <a href="https://guns.lol/tomm.fr" target="_blank" class="block social-link">
+                Connect with me @ guns.lol/tomm.fr
             </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <!-- Project Links -->
-            <a href="https://tomm101-bored.github.io/ChristmasEveCountdown/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Christmas Eve Countdown
-            </a>
-            <a href="https://tomm101-bored.github.io/mines/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Mines
-            </a>
-            <a href="https://tomm101-bored.github.io/clockcountdown/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Clock Countdown
-            </a>
-            <a href="https://tomm101-bored.github.io/hangman/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Hangman
-            </a>
-            <a href="https://tomm101-bored.github.io/textanalyzer/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Text Analyzer
-            </a>
-            <a href="https://tomm101-bored.github.io/CalculatorSimple/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Simple Calculator
-            </a>
-            <a href="https://tomm101-bored.github.io/statusswitcher/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Status Switcher
-            </a>
-            <a href="https://tomm101-bored.github.io/clickme/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Click Me
-            </a>
-            <a href="https://tomm101-bored.github.io/textplanner/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Text Planner
-            </a>
-            <a href="https://tomm101-bored.github.io/stopwatch/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Stopwatch
-            </a>
-            <a href="https://tomm101-bored.github.io/YMDP/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                YMDP
-            </a>
-            <a href="https://tomm101-bored.github.io/rolladie/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Roll a Die
-            </a>
-            <a href="https://tomm101-bored.github.io/TIDP/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                TIDP
-            </a>
-            <a href="https://tomm101-bored.github.io/discordembededitor" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Discord Embed Editor
-            </a>
-            <a href="https://tomm101-bored.github.io/rockpaperscissors" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Rock Paper Scissors
-            </a>
-            <a href="https://tomm101-bored.github.io/downloadmoreram" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Download More RAM
-            </a>
-            <a href="https://tomm101-bored.github.io/onehourprogressbar" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                One Hour Progress Bar
-            </a>
-            <a href="https://onlycats404.github.io/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                OnlyCats404
-            </a>
-             <a href="https://tomm101-bored.github.io/WebGate/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                Webgate
-            </a>
-                         <a href="https://tomm101-bored.github.io/trueornot/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                True or not?
-            </a>
-            <a href="https://tomm101-bored.github.io/ipchecker/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                IP Checker
-            </a>
-               <a href="https://tomm101-bored.github.io/iplookup/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                IP Lookup
-            </a>
-                        <a href="https://tomm101-bored.github.io/ios26beta/" target="_blank" class="bg-gray-200 dark:bg-gray-800 rounded-xl p-4 text-center hover:bg-gray-300 dark:hover:bg-gray-700 transition">
-                iOS 26 Beta Timeline
-            </a>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <a href="https://tomm101-bored.github.io/ChristmasEveCountdown/" target="_blank" class="project-card"><i class="fas fa-gifts"></i> Christmas Countdown</a>
+            <a href="https://tomm101-bored.github.io/mines/" target="_blank" class="project-card"><i class="fas fa-bomb"></i> Mines</a>
+            <a href="https://tomm101-bored.github.io/clockcountdown/" target="_blank" class="project-card"><i class="fas fa-clock"></i> Clock Countdown</a>
+            <a href="https://tomm101-bored.github.io/hangman/" target="_blank" class="project-card"><i class="fas fa-user-secret"></i> Hangman</a>
+            <a href="https://tomm101-bored.github.io/textanalyzer/" target="_blank" class="project-card"><i class="fas fa-file-alt"></i> Text Analyzer</a>
+            <a href="https://tomm101-bored.github.io/CalculatorSimple/" target="_blank" class="project-card"><i class="fas fa-calculator"></i> Simple Calculator</a>
+            <a href="https://tomm101-bored.github.io/statusswitcher/" target="_blank" class="project-card"><i class="fas fa-toggle-on"></i> Status Switcher</a>
+            <a href="https://tomm101-bored.github.io/clickme/" target="_blank" class="project-card"><i class="fas fa-mouse-pointer"></i> Click Me</a>
+            <a href="https://tomm101-bored.github.io/textplanner/" target="_blank" class="project-card"><i class="fas fa-calendar-alt"></i> Text Planner</a>
+            <a href="https://tomm101-bored.github.io/stopwatch/" target="_blank" class="project-card"><i class="fas fa-stopwatch"></i> Stopwatch</a>
+            <a href="https://tomm101-bored.github.io/YMDP/" target="_blank" class="project-card"><i class="fas fa-pencil"></i> YMDP</a>
+            <a href="https://tomm101-bored.github.io/rolladie/" target="_blank" class="project-card"><i class="fas fa-dice"></i> Roll a Die</a>
+            <a href="https://tomm101-bored.github.io/TIDP/" target="_blank" class="project-card"><i class="fas fa-image"></i> TIDP</a>
+            <a href="https://tomm101-bored.github.io/discordembededitor" target="_blank" class="project-card"><i class="fab fa-discord"></i> Discord Embed Editor</a>
+            <a href="https://tomm101-bored.github.io/rockpaperscissors" target="_blank" class="project-card"><i class="fas fa-hand-rock"></i> Rock Paper Scissors</a>
+            <a href="https://tomm101-bored.github.io/downloadmoreram" target="_blank" class="project-card"><i class="fas fa-memory"></i> Download More RAM</a>
+            <a href="https://tomm101-bored.github.io/onehourprogressbar" target="_blank" class="project-card"><i class="fas fa-spinner"></i> One Hour Progress Bar</a>
+            <a href="https://onlycats404.github.io/" target="_blank" class="project-card"><i class="fas fa-cat"></i> OnlyCats404</a>
+            <a href="https://tomm101-bored.github.io/WebGate/" target="_blank" class="project-card"><i class="fas fa-door-open"></i> Webgate</a>
+            <a href="https://tomm101-bored.github.io/trueornot/" target="_blank" class="project-card"><i class="fas fa-question-circle"></i> True or Not?</a>
+            <a href="https://tomm101-bored.github.io/ipchecker/" target="_blank" class="project-card"><i class="fas fa-network-wired"></i> IP Checker</a>
+            <a href="https://tomm101-bored.github.io/iplookup/" target="_blank" class="project-card"><i class="fas fa-search-location"></i> IP Lookup</a>
+            <a href="https://tomm101-bored.github.io/ios26beta/" target="_blank" class="project-card"><i class="fab fa-apple"></i> iOS 26 Beta Timeline</a>
         </div>
     </section>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const moonIcon = themeToggleBtn.querySelector('.fa-moon');
+        const sunIcon = themeToggleBtn.querySelector('.fa-sun');
+
+        themeToggleBtn.addEventListener('click', () => {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+
+            if (html.classList.contains('dark')) {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
