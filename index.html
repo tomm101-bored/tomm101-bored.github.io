@@ -1,185 +1,169 @@
-<!DOCTYPE html>
-<html lang="en" class="dark"> <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomm's Project Portal</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tomm’s Project Portal</title>
+    <meta name="description" content="Tomm’s hand-crafted collection of tiny web tools, games, and experiments." />
+
+    <meta property="og:title" content="Tomm’s Project Portal" />
+    <meta property="og:description" content="A polished grid of Tomm’s web projects with dark mode and buttery animations." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://dummyimage.com/1200x630/4c51bf/ffffff&text=Tomm+Projects" />
+    <meta name="theme-color" content="#4c51bf" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a202c" media="(prefers-color-scheme: dark)">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Poppins', 'ui-sans-serif', 'system-ui'] },
+            colors: { brand: { DEFAULT: '#4c51bf', dark: '#6b46c1' } },
+            boxShadow: { card: '0 10px 25px -10px rgb(0 0 0 / 0.25)' }
+          },
+        },
+        darkMode: 'class',
+      }
+    </script>
 
     <style>
-        /* --- Custom CSS for a more polished look --- */
-
-        /* Setting the base font and a smooth background transition */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4f7f9; /* Light mode background */
-            color: #4a5568; /* Light mode text */
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-
-        /* Dark mode styles */
-        .dark body {
-            background-color: #1a202c; /* Dark mode background */
-            color: #e2e8f0; /* Dark mode text */
-        }
-
-        /* Styling for the main header with a gradient text effect */
-        .gradient-text {
-            background-image: linear-gradient(to right, #4c51bf, #6b46c1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* Project card styling */
-        .project-card {
-            background-color: #ffffff; /* Light mode card background */
-            border: 1px solid #e2e8f0; /* Light mode border */
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem; /* Space between icon and text */
-            color: #2d3748; /* Light mode card text */
-        }
-
-        .dark .project-card {
-            background-color: #2d3748; /* Dark mode card background */
-            border: 1px solid #4a5568; /* Dark mode border */
-            color: #e2e8f0; /* Dark mode card text */
-        }
-
-        /* Enhanced hover effect for project cards */
-        .project-card:hover {
-            transform: translateY(-5px); /* Lifts the card on hover */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .dark .project-card:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Social link styling */
-        .social-link {
-            background-color: #4c51bf;
-            color: white;
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            font-weight: 600;
-        }
-
-        .social-link:hover {
-            background-color: #434190;
-            transform: translateY(-3px);
-        }
-
-        /* Theme toggle button styling */
-        .theme-toggle {
-            background-color: #e2e8f0;
-            color: #2d3748;
-            border-radius: 9999px; /* Make it a circle */
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-        }
-        
-        .dark .theme-toggle {
-            background-color: #2d3748;
-            color: #e2e8f0;
-        }
-
-        .theme-toggle:hover {
-            transform: rotate(180deg);
-        }
-
+      .gradient-text {
+        background-image: linear-gradient(to right, #4c51bf, #6b46c1);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
     </style>
-</head>
-<body class="min-h-screen flex flex-col items-center p-6 sm:p-8">
-    
-    <div class="w-full max-w-5xl flex justify-end mb-4">
-       <button id="theme-toggle-btn" class="theme-toggle">
-            <i class="fas fa-moon"></i> <i class="fas fa-sun" style="display: none;"></i> </button>
+  </head>
+
+  <body class="min-h-screen bg-slate-50 text-slate-700 transition-colors duration-500 dark:bg-slate-900 dark:text-slate-100">
+    <a href="#projects" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-3 focus:py-2 focus:rounded-lg focus:bg-brand focus:text-white">Skip to projects</a>
+
+    <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand/10 text-brand dark:bg-brand/20">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </span>
+          <span class="text-sm font-semibold tracking-wide text-slate-500 dark:text-slate-400">Tomm’s Project Portal</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" class="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600" aria-label="Toggle theme" title="Toggle theme (T)" type="button">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <a href="https://guns.lol/tomm.fr" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-white shadow-card hover:shadow-md hover:brightness-110">
+            <i class="fa-solid fa-id-badge"></i>
+            guns.lol/tomm.fr
+          </a>
+        </div>
+      </div>
     </div>
-    
-    <header class="text-center mb-12">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4 gradient-text">Tomm's Project Portal</h1>
-        <p class="text-lg max-w-2xl mx-auto">Heyo! I'm Tomm, a creative coder and content creator exploring the web. Welcome to my collection of projects. Feel free to look around!</p>
+
+    <header class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-10 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold gradient-text mb-4">Tomm’s Project Portal</h1>
+      <p class="mx-auto max-w-2xl text-base md:text-lg text-slate-600 dark:text-slate-300">
+        Heyo! I’m Tomm — a basic coder and small content creator. Browse my apps, games, and utilities below.
+      </p>
     </header>
 
-    <section class="w-full max-w-5xl">
-        
-        <div class="mb-8">
-            <a href="https://guns.lol/tomm.fr" target="_blank" class="block social-link">
-                guns.lol/tomm.fr
-            </a>
-        </div>
+    <main id="projects" class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+      <ul id="grid" class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></ul>
+    </main>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <a href="https://tomm101-bored.github.io/ChristmasEveCountdown/" target="_blank" class="project-card"><i class="fas fa-gifts"></i> Christmas Countdown</a>
-            <a href="https://tomm101-bored.github.io/mines/" target="_blank" class="project-card"><i class="fas fa-bomb"></i> Mines</a>
-            <a href="https://tomm101-bored.github.io/clockcountdown/" target="_blank" class="project-card"><i class="fas fa-clock"></i> Clock Countdown</a>
-            <a href="https://tomm101-bored.github.io/hangman/" target="_blank" class="project-card"><i class="fas fa-user-secret"></i> Hangman</a>
-            <a href="https://tomm101-bored.github.io/textanalyzer/" target="_blank" class="project-card"><i class="fas fa-file-alt"></i> Text Analyzer</a>
-            <a href="https://tomm101-bored.github.io/CalculatorSimple/" target="_blank" class="project-card"><i class="fas fa-calculator"></i> Simple Calculator</a>
-            <a href="https://tomm101-bored.github.io/statusswitcher/" target="_blank" class="project-card"><i class="fas fa-toggle-on"></i> Status Switcher</a>
-            <a href="https://tomm101-bored.github.io/clickme/" target="_blank" class="project-card"><i class="fas fa-mouse-pointer"></i> Click Me</a>
-            <a href="https://tomm101-bored.github.io/textplanner/" target="_blank" class="project-card"><i class="fas fa-calendar-alt"></i> Text Planner</a>
-            <a href="https://tomm101-bored.github.io/stopwatch/" target="_blank" class="project-card"><i class="fas fa-stopwatch"></i> Stopwatch</a>
-            <a href="https://tomm101-bored.github.io/YMDP/" target="_blank" class="project-card"><i class="fas fa-pencil"></i> YMDP</a>
-            <a href="https://tomm101-bored.github.io/rolladie/" target="_blank" class="project-card"><i class="fas fa-dice"></i> Roll a Die</a>
-            <a href="https://tomm101-bored.github.io/TIDG/" target="_blank" class="project-card"><i class="fa-solid fa-money-bill-1-wave"></i>TIDG</a>
-            <a href="https://tomm101-bored.github.io/discordembededitor" target="_blank" class="project-card"><i class="fab fa-discord"></i> Discord Embed Editor</a>
-            <a href="https://tomm101-bored.github.io/rockpaperscissors" target="_blank" class="project-card"><i class="fas fa-hand-rock"></i> Rock Paper Scissors</a>
-            <a href="https://tomm101-bored.github.io/downloadmoreram" target="_blank" class="project-card"><i class="fas fa-memory"></i> Download More RAM</a>
-            <a href="https://tomm101-bored.github.io/onehourprogressbar" target="_blank" class="project-card"><i class="fas fa-spinner"></i> One Hour Progress Bar</a>
-            <a href="https://onlycats404.github.io/" target="_blank" class="project-card"><i class="fas fa-cat"></i> OnlyCats404</a>
-            <a href="https://tomm101-bored.github.io/WebGate/" target="_blank" class="project-card"><i class="fas fa-door-open"></i> Webgate</a>
-            <a href="https://tomm101-bored.github.io/trueornot/" target="_blank" class="project-card"><i class="fas fa-question-circle"></i> True or Not?</a>
-            <a href="https://tomm101-bored.github.io/ipchecker/" target="_blank" class="project-card"><i class="fas fa-network-wired"></i> IP Checker</a>
-            <a href="https://tomm101-bored.github.io/iplookup/" target="_blank" class="project-card"><i class="fas fa-search-location"></i> IP Lookup</a>
-            <a href="https://tomm101-bored.github.io/ios26beta/" target="_blank" class="project-card"><i class="fab fa-apple"></i> iOS 26 Beta Timeline</a>
-            <a href="https://clantagcenter.github.io/" target="_blank" class="project-card"><i class="fa-solid fa-tag"></i></i>Clan Tag Center</a>
-            <a href="https://tomm101-bored.github.io/passwordgenerator/" target="_blank" class="project-card"><i class="fa-solid fa-key"></i>Password Generator</a>
-            <a href="https://tomm101-bored.github.io/WebTextEdit/" target="_blank" class="project-card"><i class="fa-solid fa-file-pen"></i>Web TextEdit</a>
-            <a href="https://tomm101-bored.github.io/cursorfinder/" target="_blank" class="project-card"><i class="fa-solid fa-arrow-pointer"></i>Cursor Finder</a>
-            <a href="https://tomm101-bored.github.io/dexterratings/" target="_blank" class="project-card"><i class="fa-solid fa-syringe"></i>Dexter Episode Rating Checker</a>
-            <a href="https://tomm101-bored.github.io/dexterosrater/" target="_blank" class="project-card"><i class="fa-solid fa-syringe"></i>Dexter OS Episode Rating Checker</a>
-            <a href="https://tomm101-bored.github.io/botsend/" target="_blank" class="project-card"><i class="fa-solid fa-robot"></i>BotSend</a>
-        </div>
-    </section>
+    <footer class="border-t border-slate-200/70 dark:border-slate-700/60">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-sm text-slate-500 dark:text-slate-400 flex items-center justify-between">
+        <span>Built with ❤️, Tailwind, and way too much coffee.</span>
+        <span id="updated"></span>
+      </div>
+    </footer>
+
+    <template id="card-tpl">
+      <li class="group">
+        <a class="block h-full rounded-2xl border border-slate-200 bg-white p-4 text-slate-800 shadow-sm hover:-translate-y-1 hover:shadow-card dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100" target="_blank" rel="noreferrer">
+          <div class="flex items-start gap-3">
+            <div class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand dark:bg-brand/15">
+              <i class="fa-solid fa-circle-question text-lg" data-icon></i>
+            </div>
+            <div class="min-w-0">
+              <h3 class="truncate text-base font-semibold" data-title>Title</h3>
+            </div>
+          </div>
+        </a>
+      </li>
+    </template>
 
     <script>
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        const moonIcon = themeToggleBtn.querySelector('.fa-moon');
-        const sunIcon = themeToggleBtn.querySelector('.fa-sun');
+      (function initTheme(){
+        const root = document.documentElement;
+        const stored = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && systemPrefersDark)) root.classList.add('dark');
+      })();
 
-        themeToggleBtn.addEventListener('click', () => {
-            const html = document.documentElement;
-            html.classList.toggle('dark');
+      const themeBtn = document.getElementById('theme-toggle');
+      themeBtn?.addEventListener('click', toggleTheme);
+      window.addEventListener('keydown', (e)=>{ if ((e.key === 't' || e.key === 'T') && !/input|textarea/i.test(e.target.tagName)) toggleTheme(); });
+      function toggleTheme(){
+        const root = document.documentElement;
+        const toDark = !root.classList.contains('dark');
+        root.classList.toggle('dark', toDark);
+        localStorage.setItem('theme', toDark ? 'dark' : 'light');
+      }
 
-            if (html.classList.contains('dark')) {
-                moonIcon.style.display = 'block';
-                sunIcon.style.display = 'none';
-            } else {
-                moonIcon.style.display = 'none';
-                sunIcon.style.display = 'block';
-            }
-        });
+      const projects = [
+        { t:'Christmas Countdown', u:'https://tomm101-bored.github.io/ChristmasEveCountdown/', i:'fa-gifts' },
+        { t:'Mines', u:'https://tomm101-bored.github.io/mines/', i:'fa-bomb' },
+        { t:'Clock Countdown', u:'https://tomm101-bored.github.io/clockcountdown/', i:'fa-clock' },
+        { t:'Hangman', u:'https://tomm101-bored.github.io/hangman/', i:'fa-user-secret' },
+        { t:'Text Analyzer', u:'https://tomm101-bored.github.io/textanalyzer/', i:'fa-file-lines' },
+        { t:'Simple Calculator', u:'https://tomm101-bored.github.io/CalculatorSimple/', i:'fa-calculator' },
+        { t:'Status Switcher', u:'https://tomm101-bored.github.io/statusswitcher/', i:'fa-toggle-on' },
+        { t:'Click Me', u:'https://tomm101-bored.github.io/clickme/', i:'fa-mouse-pointer' },
+        { t:'Text Planner', u:'https://tomm101-bored.github.io/textplanner/', i:'fa-calendar-days' },
+        { t:'Stopwatch', u:'https://tomm101-bored.github.io/stopwatch/', i:'fa-stopwatch' },
+        { t:'YMDP', u:'https://tomm101-bored.github.io/YMDP/', i:'fa-pen' },
+        { t:'Roll a Die', u:'https://tomm101-bored.github.io/rolladie/', i:'fa-dice' },
+        { t:'TIDG', u:'https://tomm101-bored.github.io/TIDG/', i:'fa-money-bill-1-wave' },
+        { t:'Discord Embed Editor', u:'https://tomm101-bored.github.io/discordembededitor', i:'fa-brands fa-discord' },
+        { t:'Rock Paper Scissors', u:'https://tomm101-bored.github.io/rockpaperscissors', i:'fa-hand-rock' },
+        { t:'Download More RAM', u:'https://tomm101-bored.github.io/downloadmoreram', i:'fa-memory' },
+        { t:'One Hour Progress Bar', u:'https://tomm101-bored.github.io/onehourprogressbar', i:'fa-spinner' },
+        { t:'OnlyCats404', u:'https://onlycats404.github.io/', i:'fa-cat' },
+        { t:'WebGate', u:'https://tomm101-bored.github.io/WebGate/', i:'fa-door-open' },
+        { t:'True or Not?', u:'https://tomm101-bored.github.io/trueornot/', i:'fa-circle-question' },
+        { t:'IP Checker', u:'https://tomm101-bored.github.io/ipchecker/', i:'fa-network-wired' },
+        { t:'IP Lookup', u:'https://tomm101-bored.github.io/iplookup/', i:'fa-location-dot' },
+        { t:'iOS 26 Beta Timeline', u:'https://tomm101-bored.github.io/ios26beta/', i:'fa-brands fa-apple' },
+        { t:'Clan Tag Center', u:'https://clantagcenter.github.io/', i:'fa-tag' },
+        { t:'Password Generator', u:'https://tomm101-bored.github.io/passwordgenerator/', i:'fa-key' },
+        { t:'Web TextEdit', u:'https://tomm101-bored.github.io/WebTextEdit/', i:'fa-file-pen' },
+        { t:'Cursor Finder', u:'https://tomm101-bored.github.io/cursorfinder/', i:'fa-arrow-pointer' },
+        { t:'Dexter Ratings', u:'https://tomm101-bored.github.io/dexterratings/', i:'fa-syringe' },
+        { t:'Dexter OS Ratings', u:'https://tomm101-bored.github.io/dexterosrater/', i:'fa-syringe' },
+        { t:'BotSend', u:'https://tomm101-bored.github.io/botsend/', i:'fa-robot' },
+      ];
+
+      const grid = document.getElementById('grid');
+      const tpl = document.getElementById('card-tpl');
+      const updated = document.getElementById('updated');
+
+      function makeCard(p){
+        const node = tpl.content.firstElementChild.cloneNode(true);
+        const a = node.querySelector('a');
+        a.href = p.u; a.title = p.t;
+        const icon = node.querySelector('[data-icon]');
+        icon.className = `${p.i}`.includes('fa-brands') ? p.i : `fa-solid ${p.i}`;
+        node.querySelector('[data-title]').textContent = p.t;
+        return node;
+      }
+
+      projects.forEach(p=> grid.appendChild(makeCard(p)));
+      updated.textContent = `Updated ${new Date().toLocaleDateString([], { year:'numeric', month:'short', day:'2-digit' })}`;
     </script>
-</body>
+  </body>
 </html>
