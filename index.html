@@ -4,31 +4,57 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tomm’s Project Portal</title>
-    <meta name="description" content="Tomm’s hand-crafted collection of tiny web tools, games, and experiments." />
+    <title>Tomm's Site</title>
+    <meta name="description" content="Tomm's personal site — about me and my coding projects." />
 
-    <meta property="og:title" content="Tomm’s Project Portal" />
-    <meta property="og:description" content="tomms ud website" />
+    <!-- Canonical / basic SEO -->
+    <link rel="canonical" href="https://tommfr38.github.io/" />
+    <meta name="robots" content="index,follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tomm · About & Projects" />
+    <meta property="og:description" content="About me and my little coding projects." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://dummyimage.com/1200x630/4c51bf/ffffff&text=Tomm+Projects" />
-    <meta name="theme-color" content="#4c51bf" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#1a202c" media="(prefers-color-scheme: dark)">
+    <meta property="og:url" content="https://tommfr38.github.io/" />
+    <meta property="og:image" content="/tommlogo-big.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tomm · About & Projects" />
+    <meta name="twitter:description" content="About me and my little coding projects." />
+    <meta name="twitter:image" content="/tommlogo-big.png" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#050607" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#063a2b" media="(prefers-color-scheme: light)" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/tommlogo-mini.png" />
+    <link rel="apple-touch-icon" href="/tommlogo-mini.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
-        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: { sans: ['Poppins', 'ui-sans-serif', 'system-ui'] },
-            colors: { brand: { DEFAULT: '#4c51bf', dark: '#6b46c1' } },
+            colors: {
+              brandBlack: '#050607',
+              brandGreen: '#063a2b',
+              accent: '#f5c400',
+            },
             boxShadow: {
-              card: '0 16px 40px -20px rgb(15 23 42 / 0.9)',
+              glass: '0 24px 70px -45px rgb(0 0 0 / 0.85)',
             },
           },
         },
@@ -36,13 +62,6 @@
     </script>
 
     <style>
-      .gradient-text {
-        background-image: linear-gradient(to right, #4c51bf, #6b46c1);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
       @keyframes fade-in-up {
         from {
           opacity: 0;
@@ -62,110 +81,160 @@
         animation: fade-in-up 0.9s ease-out both;
       }
 
-      .card-glow {
-        transition:
-          transform 0.2s ease-out,
-          box-shadow 0.25s ease-out,
-          border-color 0.25s ease-out;
-      }
-
-      .card-glow:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
-        border-color: rgba(76, 81, 191, 0.7);
+      /* Hide pages without breaking accessibility */
+      [data-page][hidden] {
+        display: none !important;
       }
     </style>
   </head>
 
-  <body class="min-h-screen bg-slate-50 text-slate-700 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-100">
-    <a href="#projects" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-3 focus:py-2 focus:rounded-lg focus:bg-brand focus:text-white">
-      Skip to projects
-    </a>
+  <body class="min-h-screen text-white flex flex-col">
+    <!-- Background (black -> dark green) -->
+    <div class="fixed inset-0 -z-10 bg-gradient-to-br from-brandBlack via-black to-brandGreen"></div>
+    <div class="fixed inset-0 -z-10 opacity-35 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.10),transparent_45%),radial-gradient(circle_at_80%_30%,rgba(34,197,94,0.10),transparent_40%),radial-gradient(circle_at_30%_90%,rgba(34,197,94,0.10),transparent_40%)]"></div>
 
-    <!-- Top chromebar -->
-    <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
-      <div class="flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3 fade-in-up">
-          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand/10 text-brand dark:bg-brand/20">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-          </span>
-          <div class="flex flex-col">
-            <span class="text-sm font-semibold tracking-wide text-slate-500 dark:text-slate-300">
-              Tomm’s Project Portal
-            </span>
-            <span class="text-[11px] text-slate-400 dark:text-slate-500">
-              Tiny apps · Games · Utilities
-            </span>
-          </div>
-        </div>
+    <!-- Top menu -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-black/25 border-b border-white/10">
+      <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <!-- Left: logo -->
+        <a href="#about" class="flex items-center gap-3" aria-label="Go to About">
+          <img
+            src="/tommlogo-mini.png"
+            alt="Tomm logo"
+            class="h-9 w-9 rounded-xl"
+            loading="eager"
+          />
+          <span class="hidden sm:inline-block text-sm font-semibold tracking-wide text-white/80">Tomm</span>
+        </a>
 
-        <div class="flex items-center gap-2 fade-in-up-delay">
-          <button
-            id="theme-toggle"
-            class="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 transition-colors"
-            aria-label="Toggle theme"
-            title="Toggle theme (T)"
-            type="button"
-          >
-            <!-- Moon / sun swap via CSS, JS just toggles .dark -->
-            <i class="fa-solid fa-moon group-[.light]/root:block hidden"></i>
-            <i class="fa-solid fa-sun"></i>
-          </button>
-
+        <!-- Middle: menu links -->
+        <div class="flex items-center justify-center gap-6 text-sm font-semibold">
           <a
-            href="https://guns.lol/tomm.fr"
-            target="_blank"
-            rel="noreferrer"
-            class="inline-flex items-center gap-2 rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-white shadow-card hover:brightness-110 hover:shadow-lg transition-shadow"
+            id="nav-about"
+            href="#about"
+            class="relative text-white/80 hover:text-white transition-colors"
+            aria-current="page"
           >
-            <i class="fa-solid fa-id-badge"></i>
-            guns.lol/tomm.fr
+            About me
+          </a>
+          <a
+            id="nav-projects"
+            href="#projects"
+            class="relative text-white/80 hover:text-white transition-colors"
+          >
+            Projects
           </a>
         </div>
-      </div>
-    </div>
 
-    <!-- Hero -->
-    <header class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-10 text-center fade-in-up-delay">
-      <div class="inline-flex items-center gap-2 rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs text-slate-500 shadow-sm dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-300 mb-4">
-        <span class="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)]"></span>
-        <span>Over 30 small web projects</span>
-      </div>
-
-      <h1 class="text-4xl md:text-6xl font-extrabold gradient-text mb-4">
-        Tomm’s Project Portal
-      </h1>
-
-      <p class="mx-auto max-w-2xl text-base md:text-lg text-slate-600 dark:text-slate-300">
-        Heyo, I’m Tomm — a basic coder and small content creator.  
-        Here’s a single place for all my mini apps, games, and random tools.
-      </p>
+        <!-- Right spacer to keep middle centered -->
+        <div class="w-[92px] sm:w-[130px]"></div>
+      </nav>
     </header>
 
-    <!-- Projects grid -->
-    <main id="projects" class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
-      <div class="mb-4 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-        <span>Click any card to open the project in a new tab.</span>
-        <span id="updated" class="hidden sm:inline-block"></span>
-      </div>
+    <div id="pages" class="flex-1">
+    <!-- ABOUT PAGE -->
+    <main data-page id="page-about" class="fade-in-up">
+      <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col items-center text-center">
+          <!-- PFP placeholder -->
+          <div class="relative">
+            <div class="absolute -inset-6 rounded-full bg-white/10 blur-2xl"></div>
+            <img
+              src="/BenjiSoniapfp.png"
+              alt="Profile picture"
+              class="relative h-32 w-32 sm:h-36 sm:w-36 rounded-full object-cover border border-white/15 shadow-glass"
+            />
+          </div>
 
-      <ul
-        id="grid"
-        class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 fade-in-up-delay"
-      ></ul>
+          <!-- Name -->
+          <h1 class="mt-6 text-5xl sm:text-6xl font-extrabold tracking-tight text-white drop-shadow">
+            Tomm
+          </h1>
 
-      <div class="mt-4 text-right text-xs text-slate-500 dark:text-slate-400 sm:hidden">
-        <span id="updated-mobile"></span>
-      </div>
+          <!-- Description (kept from your existing code) -->
+          <p class="mt-5 max-w-2xl text-base sm:text-lg text-white/85 leading-relaxed">
+            I am Tomm a beginner coder who mostly uses HTML, Python and JavaScript. I am also
+            a small content creator who makes random posts on Tiktok and Instagram.
+            For any inqueries, message me on Tiktok or Instagram(Tiktok is preferable)
+          </p>
+
+          <!-- Social links (real links, open in new tab) -->
+          <div class="mt-10">
+            <div class="flex items-center justify-center gap-8 text-4xl sm:text-5xl">
+              <a
+                href="https://tiktok.com/@tommfr38"
+                target="_blank"
+                rel="noreferrer"
+                class="text-white/75 hover:text-white transition-colors"
+                aria-label="TikTok"
+              >
+                <i class="fa-brands fa-tiktok"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/tommfr_38/"
+                target="_blank"
+                rel="noreferrer"
+                class="text-white/75 hover:text-white transition-colors"
+                aria-label="Instagram"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a
+                href="https://x.com/tommfr38"
+                target="_blank"
+                rel="noreferrer"
+                class="text-white/75 hover:text-white transition-colors"
+                aria-label="X"
+              >
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a
+                href="https://discord.com/users/936649721055948850"
+                target="_blank"
+                rel="noreferrer"
+                class="text-white/75 hover:text-white transition-colors"
+                aria-label="Discord"
+              >
+                <i class="fa-brands fa-discord"></i>
+              </a>
+              <a
+                href="https://github.com/tommfr38"
+                target="_blank"
+                rel="noreferrer"
+                class="text-white/75 hover:text-white transition-colors"
+                aria-label="GitHub"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
+    <!-- PROJECTS PAGE -->
+    <main data-page id="page-projects" class="fade-in-up-delay" hidden>
+      <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <div class="text-center mb-8">
+          <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Projects</h2>
+          <p class="mt-3 text-white/75">
+            Click any card to open the project in a new tab.
+          </p>
+        </div>
+
+        <ul id="grid" class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></ul>
+
+        <div class="mt-10 text-center text-xs text-white/55">
+          <span id="updated"></span>
+        </div>
+      </section>
+    </main>
+
+    </div>
     <!-- Footer -->
-    <footer class="border-t border-slate-200/70 dark:border-slate-800/80">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-sm text-slate-500 dark:text-slate-400 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <span>Built with ❤️, Tailwind, and probably too much coffee.</span>
-        <span class="text-xs text-slate-400 dark:text-slate-500">
-          Press <code class="rounded bg-slate-200 px-1.5 py-0.5 text-[11px] dark:bg-slate-800">T</code> for theme toggle
-        </span>
+    <footer class="border-t border-white/10 bg-black/15">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-sm text-white/60 text-center">
+        Built with ❤️ by Tomm.
       </div>
     </footer>
 
@@ -173,27 +242,26 @@
     <template id="card-tpl">
       <li class="group">
         <a
-          class="card-glow relative block h-full rounded-2xl border border-slate-200/80 bg-white/90 p-4 text-slate-800 shadow-sm overflow-hidden
-                 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-100"
+          class="relative block h-full rounded-2xl border border-white/10 bg-white/5 p-4 text-white shadow-glass overflow-hidden
+                 hover:bg-white/10 hover:border-white/20 transition"
           target="_blank"
           rel="noreferrer"
         >
-          <!-- subtle gradient glow behind icon -->
-          <div class="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
           <div class="relative flex items-start gap-3">
-            <div class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand dark:bg-brand/15">
+            <div class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
               <i class="fa-solid fa-circle-question text-lg" data-icon></i>
             </div>
             <div class="min-w-0">
               <h3 class="truncate text-base font-semibold" data-title>Title</h3>
-              <p class="mt-1 text-xs text-slate-500 dark:text-slate-400 line-clamp-2" data-desc>
+              <p class="mt-1 text-xs text-white/70 line-clamp-2" data-desc>
                 Small web thing made by Tomm.
               </p>
             </div>
           </div>
 
-          <div class="relative mt-4 flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500">
+          <div class="relative mt-4 flex items-center justify-between text-[11px] text-white/55">
             <span class="inline-flex items-center gap-1">
               <span class="h-1.5 w-1.5 rounded-full bg-emerald-400/80"></span>
               <span>Open project</span>
@@ -208,37 +276,39 @@
     </template>
 
     <script>
-      // THEME INIT
-      (function initTheme(){
-        const root = document.documentElement;
-        const stored = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (!stored && systemPrefersDark)) {
-          root.classList.add('dark');
-        } else {
-          root.classList.remove('dark');
-        }
-      })();
+      // Simple 2-page routing via hash (#about / #projects)
+      const pageAbout = document.getElementById('page-about');
+      const pageProjects = document.getElementById('page-projects');
+      const navAbout = document.getElementById('nav-about');
+      const navProjects = document.getElementById('nav-projects');
 
-      // THEME TOGGLE
-      const themeBtn = document.getElementById('theme-toggle');
-      function toggleTheme(){
-        const root = document.documentElement;
-        const toDark = !root.classList.contains('dark');
-        root.classList.toggle('dark', toDark);
-        localStorage.setItem('theme', toDark ? 'dark' : 'light');
+      function setActive(which) {
+        const isAbout = which === 'about';
+        pageAbout.hidden = !isAbout;
+        pageProjects.hidden = isAbout;
+
+        navAbout.setAttribute('aria-current', isAbout ? 'page' : 'false');
+        navProjects.setAttribute('aria-current', !isAbout ? 'page' : 'false');
+
+        // small visual hint
+        navAbout.classList.toggle('text-white', isAbout);
+        navAbout.classList.toggle('text-white/80', !isAbout);
+        navProjects.classList.toggle('text-white', !isAbout);
+        navProjects.classList.toggle('text-white/80', isAbout);
       }
 
-      themeBtn?.addEventListener('click', toggleTheme);
-      window.addEventListener('keydown', (e) => {
-        if ((e.key === 't' || e.key === 'T') && !/input|textarea/i.test(e.target.tagName)) {
-          toggleTheme();
-        }
-      });
+      function route() {
+        const h = (location.hash || '#about').toLowerCase();
+        if (h.includes('projects')) setActive('projects');
+        else setActive('about');
+      }
 
-      // PROJECT DATA
+      window.addEventListener('hashchange', route);
+      route();
+
+      // PROJECT DATA (unchanged)
       const projects = [
-          {
+        {
           t: 'NeverFap',
           u: 'https://tommfr38.github.io/neverfap/',
           i: 'fa-fire-flame-curved',
@@ -447,9 +517,8 @@
       const grid = document.getElementById('grid');
       const tpl = document.getElementById('card-tpl');
       const updated = document.getElementById('updated');
-      const updatedMobile = document.getElementById('updated-mobile');
 
-      function makeCard(p){
+      function makeCard(p) {
         const node = tpl.content.firstElementChild.cloneNode(true);
         const a = node.querySelector('a');
         a.href = p.u;
@@ -465,11 +534,14 @@
         return node;
       }
 
-      projects.forEach(p => grid.appendChild(makeCard(p)));
+      projects.forEach((p) => grid.appendChild(makeCard(p)));
 
-      const dateText = `Updated ${new Date().toLocaleDateString([], { year:'numeric', month:'short', day:'2-digit' })}`;
+      const dateText = `Updated ${new Date().toLocaleDateString([], {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+      })}`;
       if (updated) updated.textContent = dateText;
-      if (updatedMobile) updatedMobile.textContent = dateText;
     </script>
   </body>
 </html>
